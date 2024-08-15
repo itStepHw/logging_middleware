@@ -128,11 +128,12 @@ class Logger:
             self.__write(f'WARNING', to_console, log_file_name)
 
     def line(self, message: str = None, to_console: bool = True, log_file_name: str = None):
-        if message is None:
-            self.__message = f'-' * 20
-        else:
-            self.__message = f'-' * 20 + message
-        self.__write(f'INFO', to_console, log_file_name)
+        if self.__line_enable:
+            if message is None:
+                self.__message = f'-' * 20
+            else:
+                self.__message = f'-' * 20 + message
+            self.__write(f'INFO', to_console, log_file_name)
 
     def succes(self, message: str, to_console: bool = True, log_file_name: str = None):
         if self.__success_enable:
